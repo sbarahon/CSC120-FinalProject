@@ -2,13 +2,11 @@ import java.util.ArrayList;
 
 public class Protagonist {
 
-    public boolean home_items_found;
     public ArrayList<String> inventory;
     public int character_type = 0;
 
     public Protagonist(){
         inventory = new ArrayList<String>();
-        home_items_found = false;
     }
     
     public void addInventory(String item){
