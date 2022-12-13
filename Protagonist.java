@@ -3,10 +3,12 @@ import java.util.ArrayList;
 public class Protagonist {
 
     public ArrayList<String> inventory;
-    public int character_type = 0;
+    public String character_type;
 
     public Protagonist(){
         inventory = new ArrayList<String>();
+
+
     }
     
     public void addInventory(String item){
@@ -15,6 +17,10 @@ public class Protagonist {
 
     public boolean checkInventory(String item){
         return this.inventory.contains(item);
+    }
+
+    public String getType(){
+        return this.character_type;
     }
 
     public void removeInventory(String item){
@@ -31,10 +37,10 @@ public class Protagonist {
     }
 
     /**
-     * After making a decision, this method is called so that in the end, the character type will indicate which ending the user receives.
+     * After making certain decisions, this method is called so that in the end, the character type will indicate which ending the user receives.
      */
-    public void updateChar(){
-        this.character_type+=1;
+    public void updateChar(String type){
+        this.character_type=type;
     }
 
     public static void main(String[] args){
@@ -44,6 +50,4 @@ public class Protagonist {
         myChar.addInventory("water");
         myChar.accessInventory();
     }
-
-
 }

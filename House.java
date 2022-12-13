@@ -25,6 +25,7 @@ public class House {
         else {
             System.out.println("You're already on the top floor.");
         }
+        printOptions();
     
     }
 
@@ -38,6 +39,7 @@ public class House {
         else {
             System.out.println("You're already on the ground floor.");
         }
+        printOptions();
     }
 
     public void enterLivingRoom(){
