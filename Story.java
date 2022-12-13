@@ -29,13 +29,13 @@ public class Story{
 
     public void ending(){
         if (character.getType().equals("A")){
-            displayText("The Goblins discover you and Jay in your attempts to hijack the ship. However, you are able to strike a deal in which the Goblins inhabit Mars instead and leave the humans on Earth");
+            displayText("\n\nThe Goblins discover you and Jay in your attempts to hijack the ship. However, you are able to strike a deal in which the Goblins inhabit Mars instead and leave the humans on Earth");
         }
         if (character.getType().equals("B")){
-            displayText("The goblins discover you in your attempt to hijack the ship. They take you to their lair and try to dissect you but then you wake up and it was all a dream!");
+            displayText("\n\nThe goblins discover you in your attempt to hijack the ship. They take you to their lair and try to dissect you but then you wake up and it was all a dream!");
         }
         if (character.getType().equals("C")){
-            displayText("You were able to help the Goblins update their system and identify the missing kids on Earth!");
+            displayText("\n\nYou were able to help the Goblins update their system and identify the missing kids on Earth!");
         }
     }
 
@@ -286,7 +286,6 @@ public class Story{
                 }
 
             }
-            
 
             if (user_response.equals("OPTIONS")){
                 myShip.printOptions();
@@ -305,7 +304,7 @@ public class Story{
                         character.addInventory("secret code");
                         tasks.remove("get the secret code to the weapons room in the Security room");
                     } else { 
-                        displayText("We should really get that translator so I can understand what all these signs mean . . .");
+                        displayText("We should really get that translator so I can understand what all these signs mean . . .pop");
                     }
                 } 
 
@@ -317,11 +316,12 @@ public class Story{
                     character.addInventory("translator");
                     tasks.remove("get a translator from the communications room");
                 }
+
                 if (user_response.equals("HIJACK SHIP")&& myShip.current_room.equals("the Weapons Room")){
                     displayText("You and Jay looked around the numerous ships and climbed the stairs into one of them.");
                     displayText("\n\nYou: How do we turn this on?\n\nYou both looked through the various buttons and found a big large green button.");
                     displayText("\n\nJay: Maybe it's this one . . .");
-                    displayText("\n\nUpon pressing the button all the lights in the ship turned on and it made a very loud humming noise");
+                    displayText("\n\nUpon pressing the button all the lights in the ship turned on and it made a very loud humming noise . . .");
                     tasks.remove("sneak into the weapons room and hijack a ship");
                 } 
             }
@@ -356,13 +356,11 @@ public class Story{
                     displayText("You looked around the numerous ships and climbed the stairs into one of them.");
                     displayText("\n\nYou: How do I turn this on?\n\nYou looked through the various buttons and found a big large green button.");
                     displayText("\n\nYou: Maybe it's this one . . .");
-                    displayText("\n\nUpon pressing the button all the lights in the ship turned on and it made a very loud humming noise");
+                    displayText("\n\nUpon pressing the button all the lights in the ship turned on and it made a very loud humming noise . . .");
                     tasks.remove("sneak into the weapons room and hijack a ship");
                 } 
-
             }
 
-            
             //character C//
             if (character.getType().equals("C")){
                if (user_response.equals("FIND SECRET CODE")&& myShip.current_room.equals("the Security Room")&& character.checkInventory("secret code")==false){
@@ -401,9 +399,9 @@ public class Story{
          input.close();
     }
 
-    public void packBag(){
+    public void packBag(Scanner new_input){
         String x="true";
-        Scanner input = new Scanner(System.in);
+
         displayText("You: I\'m probably going to need water, some snacks, a blanket, and my phone charger.");
         home.printOptions();
 
@@ -416,7 +414,7 @@ public class Story{
 
         while (x.equals("true")){
             System.out.print("\nChoose Action(enter 'options' for moves list):");
-            String user_input = input.nextLine().toUpperCase();
+            String user_input = new_input.nextLine().toUpperCase();
 
             if (user_input.equals("GO UP")){
                 home.goUp();
@@ -528,14 +526,13 @@ public class Story{
 
             }
         }
-        input.close();
     }
 
     public static void main(String[] args){
 
         Story story = new Story();
         //uncomment after done testing code
-        displayText("You\'re in your dimly lit bedroom reading Harry Potter: The Chamber of Secrets underneath the violet LED lights wrapped around the ceiling. Your pet dog Milo is cuddled up beside you. You\'ve just gotten back from school and your mom is almost done making dinner, spaghetti with shrimp, you\'re favorite! You\'re almost done reading the chapter, until…\n");
+        // displayText("You\'re in your dimly lit bedroom reading Harry Potter: The Chamber of Secrets underneath the violet LED lights wrapped around the ceiling. Your pet dog Milo is cuddled up beside you. You\'ve just gotten back from school and your mom is almost done making dinner, spaghetti with shrimp, you\'re favorite! You\'re almost done reading the chapter, until…\n");
 
         String x="true";
         Scanner input = new Scanner(System.in);
@@ -547,27 +544,29 @@ public class Story{
 
             // while statement for decision block 1// 
             while (x.equals("true")){
+            
             String user_response = input.nextLine().toUpperCase();
             if (user_response.equals("A")){
                 displayText("\nYou: Just a second mom! I’m almost done with this chapter! \n");
-                displayText("\n \n  .   .   .    \n \n You continued reading feverishly to meet your parents downstairs for dinner. As you were reading you noticed Milo's ears perk up. He started looking around and whining nervously. He jumped out of the bed and scurried downstairs. \n \n You: Milo! Where are you going? \n \n You chased him down the stairs. As you got to the last step you heard a violently loud crash! BOOM! You quickly follow Milo into the kitchen.");
+                // displayText("\n \n  .   .   .    \n \n You continued reading feverishly to meet your parents downstairs for dinner. As you were reading you noticed Milo's ears perk up. He started looking around and whining nervously. He jumped out of the bed and scurried downstairs. \n \n You: Milo! Where are you going? \n \n You chased him down the stairs. As you got to the last step you heard a violently loud crash! BOOM! You quickly follow Milo into the kitchen.");
                 break;
             }
             else if (user_response.equals("B")){
                 displayText("\nYou: Okay! Coming! \n");
-                displayText("\n \n  .   .   .    \n \n You put the book away and wake up Milo to go downstairs. As you get to the last step the smell of freshly made spaghetti fills the house. You sit down at the kitchen table as your mom brings you a hot plate of spaghetti and gives you a kiss on your forehead. \n \n Mom: Ah! Forgot the napkin! \n \n Your mom leaves to bring you a napkin. Suddenly, you hear a loud crash from the kitchen! BOOM! \n \n You: MOM?! \n \n You quickly follow Milo into the kitchen.");
+                // displayText("\n \n  .   .   .    \n \n You put the book away and wake up Milo to go downstairs. As you get to the last step the smell of freshly made spaghetti fills the house. You sit down at the kitchen table as your mom brings you a hot plate of spaghetti and gives you a kiss on your forehead. \n \n Mom: Ah! Forgot the napkin! \n \n Your mom leaves to bring you a napkin. Suddenly, you hear a loud crash from the kitchen! BOOM! \n \n You: MOM?! \n \n You quickly follow Milo into the kitchen.");
                 break;
             }
             else {
                 System.out.print("Choose either A or B:");
             }
-            }
+        }
+
             //end of decision block 1//
 
-            displayText(" You see a group of green looking goblin creatures kidnapping your parents! They were speaking a strange language that you couldn't understand. Your mom yelled out to you as the creatures had dragged them out. \n \n Mom: Honey! Go hide! Don't worry about us, we'll be okay! \n \n You: But Mom! \n \n Mom: GO! Now! \n \n .   .   .   \n");
-            displayText("\nYou dropped to the floor and remained staring at the giant hole in the kitchen where your parents had just been taken through. You started sobbing uncontrollably and Milo came up to you to console you.");
+            // displayText(" You see a group of green looking goblin creatures kidnapping your parents! They were speaking a strange language that you couldn't understand. Your mom yelled out to you as the creatures had dragged them out. \n \n Mom: Honey! Go hide! Don't worry about us, we'll be okay! \n \n You: But Mom! \n \n Mom: GO! Now! \n \n .   .   .   \n");
+            // displayText("\nYou dropped to the floor and remained staring at the giant hole in the kitchen where your parents had just been taken through. You started sobbing uncontrollably and Milo came up to you to console you.");
             displayText("\n \nYou: What are we going to do Milo?");
-            displayText("\n \nSoon it would be night time and it won't be safe to stay here. A breeze comes through the hole and you see Milo start shivering.");
+            // displayText("\n \nSoon it would be night time and it won't be safe to stay here. A breeze comes through the hole and you see Milo start shivering.");
 
             ArrayList<String> current_options = new ArrayList<String>();
             current_options.add("(+)A:Get food for you and Milo");
@@ -589,6 +588,7 @@ public class Story{
                 System.out.println("\n");
                 System.out.print("Choose an action:");
 
+                
                 String user_response = input.nextLine().toUpperCase();
                 
                 if (user_response.equals("A")){
@@ -597,7 +597,7 @@ public class Story{
                 }
 
                 if (user_response.equals("B")){
-                    story.packBag();
+                    story.packBag(input);
                     current_options.remove("(+)B:Pack a to-go bag");
                 }
 
@@ -605,16 +605,16 @@ public class Story{
                 if (user_response.equals("C")){
                     if (current_options.contains("(+)B:Pack a to-go bag")==true){
                         displayText("I should probably pack some things before I leave.");
-
                     }
                     else if (current_options.contains("(+)A:Get food for you and Milo")==true){
                         displayText("I should probably eat something before I leave.");
                     }
-                    else{
+                    else {
                         break;
                     }
                 }
             }
+
             //end of tasks for user to complete//
 
             displayText("You walked out of your house with Milo. There was nobody outside. It was getting dark and the sun would soon set. You looked around the houses in your neighborhood. A lot of them also looked abandoned.");
@@ -675,7 +675,6 @@ public class Story{
                         displayText("\n\nYou walked up to the kid and sat next to him.");
                         story.story_one();
                         
-
                     }
                     if(response.equals("B")){
                         story.story_two();
