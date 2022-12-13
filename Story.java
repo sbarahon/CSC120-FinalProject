@@ -603,11 +603,11 @@ public class Story{
 
                 //CHANGE BACK TO TRUE AFTER DONE TESTING
                 if (user_response.equals("C")){
-                    if (current_options.contains("(+)B:Pack a to-go bag")==false){
+                    if (current_options.contains("(+)B:Pack a to-go bag")==true){
                         displayText("I should probably pack some things before I leave.");
 
                     }
-                    else if (current_options.contains("(+)A:Get food for you and Milo")==false){
+                    else if (current_options.contains("(+)A:Get food for you and Milo")==true){
                         displayText("I should probably eat something before I leave.");
                     }
                     else{
