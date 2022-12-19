@@ -1,21 +1,38 @@
 import java.util.ArrayList;
-
+/**
+ * Defines a house object. This is a interactive space for user to navigate within a story class. 
+ */
 public class House {
     int current_floor;
     String current_room = "the bottom floor";
 
+    /**
+     * Constructs the house object
+     * @param floor_num the current floor the user is on
+     */
     public House(int floor_num){
         this.current_floor = floor_num;
     }
 
+    /**
+     * Returns the current floor the user is on
+     * @return the current floor the user is on
+     */
     public int getCurrent_floor(){
        return this.current_floor;
     }
 
+    /**
+     * Returns the current room the user is in
+     * @return the current room the user is in
+     */
     public String getCurrent_room(){
         return this.current_room;
      }
 
+     /**
+      * Allows the user to go up a floor
+      */
     public void goUp(){
         if (this.current_floor == 1){
             this.current_floor=2;
@@ -29,7 +46,9 @@ public class House {
     
     }
 
-    //go 'downstairs'
+    /**
+     * Allows the user to go down a floor
+     */
     public void goDown(){
         if (this.current_floor == 2){
             this.current_floor=1;
@@ -42,6 +61,9 @@ public class House {
         printOptions();
     }
 
+    /**
+     * Allows the user to enter the Living Room if on correct floor
+     */
     public void enterLivingRoom(){
         if (this.current_floor == 1){
             this.current_room = "the living room";
@@ -52,6 +74,9 @@ public class House {
         }
     }
 
+    /**
+     * Allows the user to enter the Bathroom if on correct floor
+     */
     public void enterBathroom(){
         if (this.current_floor == 2){
             this.current_room = "the bathroom";
@@ -62,6 +87,9 @@ public class House {
         }
     }
 
+    /**
+     * Allows the user to enter the Kitchen if on correct floor
+     */
     public void enterKitchen(){
         if (this.current_floor == 1){
             this.current_room = "the kitchen";
@@ -72,6 +100,9 @@ public class House {
         }
     }
 
+    /**
+     * Allows the user to enter the bedroom if on correct floor
+     */
     public void enterBedroom(){
         if (this.current_floor == 2){
             this.current_room = "your bedroom";
@@ -83,6 +114,9 @@ public class House {
 
     }
 
+    /**
+     * Allows the user to enter the Parents Room if on correct floor
+     */
     public void enterParentsRoom(){
         if (this.current_floor == 2){
             this.current_room = "your parents room";
@@ -93,6 +127,9 @@ public class House {
         }
     }
 
+    /**
+     * Prints the current available options to the console
+     */
     public void printOptions(){
         ArrayList<String> current_options = new ArrayList<String>();
 
@@ -120,6 +157,10 @@ public class House {
           }
     }
 
+    /**
+     * Runs the main program that tests functionality
+     * @param args
+     */
     public static void main(String[] args){
         House myHome = new House(1);
         System.out.println(myHome.getCurrent_floor());
@@ -128,7 +169,4 @@ public class House {
         System.out.println(myHome.getCurrent_floor());
         myHome.printOptions();
     }
-
-
-    
 }

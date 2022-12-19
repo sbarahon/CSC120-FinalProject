@@ -1,28 +1,39 @@
 import java.util.ArrayList;
 
+/**
+ * Defines the Ship class
+ */
 public class Ship {
     int current_floor;
     String current_room = "the Central Hub";
     
+    /**
+     * Constructs the ship object
+     * @param level_num the current level the user is on
+     */
     public Ship(int level_num){
         this.current_floor = level_num;
-        //ideas for ship interaction
-        //trying to get in contact with the head goblin
-        //need to complete tasks before you can get to them
-        //there will be a map aspect for sure
-        //methods to navigate inside the ship
-        //or need to find a way to repair ship fuel, they were only able to afford one trip to the planet
-
     }
 
+    /**
+     * Returns the current floor the user is on
+     * @return the current floor the user is on
+     */
     public int getCurrent_floor(){
         return this.current_floor;
     }
 
+    /**
+     * Returns the current room the user is on
+     * @return the current room the user is on
+     */
     public String getCurrent_room(){
          return this.current_room;
     }
     
+    /**
+     * Allows the user to go up a floor
+     */
     public void goUp(){
         if (this.current_floor == 1){
             this.current_floor=2;
@@ -36,7 +47,9 @@ public class Ship {
     
     }
 
-    //go 'downstairs'
+    /**
+     * Allows the user to go down a floor
+     */
     public void goDown(){
         if (this.current_floor == 2){
             this.current_floor=1;
@@ -49,6 +62,9 @@ public class Ship {
         printOptions();
     }
 
+    /**
+     * Allows the user to enter the central hub if on correct floor
+     */
     public void enterCentralHub(){
         if (this.current_floor == 1){
             this.current_room = "the Central Hub";
@@ -59,6 +75,9 @@ public class Ship {
         }
     }
 
+    /**
+     * Allows the user to enter the Navigation Room if on correct floor
+     */
     public void enterNavigation(){
         if (this.current_floor == 1){
             this.current_room = "the Navigation Room";
@@ -69,6 +88,9 @@ public class Ship {
         }
     }
 
+    /**
+     * Allows the user to enter the Barracks if on correct floor
+     */
     public void enterBarracks(){
         if (this.current_floor == 1){
             this.current_room = "the Barracks";
@@ -79,6 +101,9 @@ public class Ship {
         }
     }
 
+    /**
+     * Allows the user to enter the Communications Room if on correct floor
+     */
     public void enterCommunications(){
         if (this.current_floor == 1){
             this.current_room = "the Communications Room";
@@ -89,6 +114,9 @@ public class Ship {
         }
     }
 
+    /**
+     * Allows the user to enter the Security Room if on correct floor
+     */
     public void enterSecurity(){
         if (this.current_floor == 2){
             this.current_room = "the Security Room";
@@ -100,6 +128,9 @@ public class Ship {
     }
     
 
+    /**
+     * Allows the user to enter the Medical Bay if on correct floor
+     */
     public void enterMedBay(){
         if (this.current_floor == 2){
             this.current_room = "the Medical Bay";
@@ -110,6 +141,9 @@ public class Ship {
         }
     }
 
+    /**
+     * Allows the user to enter the Engine Room if on correct floor
+     */
     public void enterEngineRoom(){
         if (this.current_floor == 2){
             this.current_room = "the Engine Room";
@@ -120,6 +154,9 @@ public class Ship {
         }
     }
 
+    /**
+     * Allows user to enter the Weapons Room if on correct floor
+     */
     public void enterWeaponsRoom(){
         if (this.current_floor == 2){
             this.current_room = "the Weapons Room";
@@ -131,6 +168,9 @@ public class Ship {
     }
     
 
+    /**
+     * Prints the current available options to the console
+     */
     public void printOptions(){
         ArrayList<String> current_options = new ArrayList<String>();
 
@@ -149,7 +189,7 @@ public class Ship {
             current_options.add("(+)Enter Barracks");
         }
 
-        current_options.add("(+)Search for Items");
+        current_options.add("(+)Look Around");
         current_options.add("(+)Current Level");
         current_options.add("(+)Current Room");
 
@@ -160,6 +200,10 @@ public class Ship {
           }
     }
 
+    /**
+     * Runs the main program that tests the Ship object functionality
+     * @param args
+     */
     public static void main(String[] args){
         Ship myShip = new Ship(1);
         System.out.println(myShip.getCurrent_floor());
