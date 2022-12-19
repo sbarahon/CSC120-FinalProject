@@ -9,12 +9,19 @@ public class Story{
     House home;
     Ship myShip;
 
+    /**
+     * Constructs the Story object
+     */
     public Story(){
         this.character= new Protagonist();
         this.home = new House(1);
         this.myShip = new Ship(1);
     }
 
+    /**
+     * Displays the inputted String as scrolling text
+     * @param text the string to be displayed to the console
+     */
     public static void displayText(String text){
         int i;
         for(i = 0; i < text.length(); i++){
@@ -27,19 +34,85 @@ public class Story{
         }
     }
 
+    /**
+     * This displays the ending of the game depending on the character type
+     */
     public void ending(){
         if (character.getType().equals("A")){
-            displayText("\n\nThe Goblins discover you and Jay in your attempts to hijack the ship. However, you are able to strike a deal in which the Goblins inhabit Mars instead and leave the humans on Earth");
-        }
+            displayText("The lights all turned red and an alarm system sounded throughout speakers in the ship");
+            displayText("\n\nWARNING! WARNING! INTRUDER ALERT!");
+            displayText("\n\nJay: Oh no! Do you think they're going to find us?");
+            displayText("\n\nA SWAT team of Goblins entered the weapons room and surrounded the small ship. ");
+            displayText("They scanned the ship with a blue light and discovered you and Jay");
+            displayText("\n\nGoblin: They're humans! Just smaller!");
+            displayText("\n\nGoblin: We'll take them to the conference room . . . . . ");
+            displayText("\n\nThe Goblins took you and Jay to a conference room where they asked you several questions.");
+            displayText("\n\nGoblin: How were you able to roam around undetected?");
+            displayText("\n\nYou: It seems as though you can't see younger humans. When our parents were taken we were both left behind. We came through one of the smaller ships on our own.");
+            displayText("\n\nGoblin: So there are still humans on planet Earth?");
+            displayText("\n\nJay: Yup!");
+            displayText("\n\nGoblin: We must embark for a second trip to Earth. You see, humans, there is a meteor heading to Earth in less than two days.");
+            displayText("\n\nWe'll take a sample of your DNA and gather the rest of the humans before the meteor hits. You've done a wonderful service for your planet. Is there anything we can provide you with now?");
+            displayText("\n\nYou: Well, there's one thing . . . . . ");
+            displayText("\n\nThe Goblins led you through a long hallway back into the Central Hub. They stepped aside and then that's when you noticed . . ");
+            displayText("\n\nYou: MOM!");
+            displayText("\n\nMom: Riley?!");
+            displayText("\n\nYou ran to your parents and reunited with your family...");
+            displayText("\n\nIn the end, the Goblins were able to rescue all the kids left on Earth before the meteor hit. Everyone watched as the giant space rock hit the planet and caused an incredibly large explosion . . . ");
+            displayText("\n\nYou: Well, to new beginnings!");
+       }
         if (character.getType().equals("B")){
-            displayText("\n\nThe goblins discover you in your attempt to hijack the ship. They take you to their lair and try to dissect you but then you wake up and it was all a dream!");
+            displayText("The lights all turned red and an alarm system sounded throughout speakers in the ship");
+            displayText("\n\nWARNING! WARNING! INTRUDER ALERT!");
+            displayText("\n\nYou: Oh no!");
+            displayText("\n\nA SWAT team of Goblins entered the weapons room and surrounded the small ship. ");
+            displayText("They scanned the ship with a blue light and discovered you.");
+            displayText("\n\nGoblin: It's a human! Just smaller!");
+            displayText("\n\nGoblin: We'll take the human to the conference room . . . . . ");
+            displayText("\n\nThe Goblins took you to a conference room where they asked you several questions.");
+            displayText("\n\nGoblin: How were you able to roam around undetected?");
+            displayText("\n\nYou: It seems as though you can't see younger humans. When my parents were taken I was left behind. I came through one of the smaller ships on my own.");
+            displayText("\n\nGoblin: So there are still humans on planet Earth?");
+            displayText("\n\nYou: Yup!");
+            displayText("\n\nGoblin: We must embark for a second trip to Earth. You see, human, there is a meteor heading to Earth in less than two days.");
+            displayText("We'll take a sample of your DNA and gather the rest of the humans before the meteor hits. You've done a wonderful service for your planet. . . ");
+            displayText("\n\n  . . . . . \n\nIn the end, the Goblins were able to rescue all the kids left on Earth before the meteor hit. Everyone watched as the giant space rock hit the planet and caused an incredibly large explosion . . . ");
+            displayText("\n\nYou: Well, to new beginnings!");
+            if (character.checkInventory("picture of parents")){
+                findParents();
+            }
         }
         if (character.getType().equals("C")){
             displayText("\n\nYou were able to help the Goblins update their system and identify the missing kids on Earth!");
+            displayText("\n\nIn the end, the Goblins were able to rescue all the kids before the meteor hit. Everyone watched as the giant space rock hit the planet and caused an incredibly large explosion . . . ");
+            displayText("\n\nYou: Well, to new beginnings!");
+            if (character.checkInventory("picture of parents")){
+                findParents();
+            }
         }
+        displayText(" . . . . . . . . .The End . . . . .. . :)");
+
+    }
+    /**
+     * Displays text for the finidng parents part of the story
+     */
+    public void findParents(){
+        displayText("\n\nSome .... time.... later ... \n\nYou went up to one of the Goblins and showed them the picture of your parents.");
+        displayText("\n\nYou: Excuse me Mr. Goblin ... Woman, um, by any chance have you seen my parents?");
+        displayText("\n\nYou held up the picture of you and your parents.");
+        displayText("\n\nThe Goblin examined the picture. \n\nGoblin: Hmmmm, sorry kid. I haven't seen them. But, I can put them through the system and find what ship they're on!");
+        displayText("\n\nThe Goblin took you to the Navigation room where she scanned the image. She then took you to a platform with lights shining down on it.");
+        displayText("\n\nGoblin: Alright kid. This will take you to the ship those folks are at.");
+        displayText("\n\nYou: Thank you so much! \n\n You hopped onto the platform with Milo and transported into another hub.");
+        displayText("\n\nYou looked around until you finally saw . . .");
+        displayText("\n\nYou: MOM!");
+        displayText("\n\nMom: Riley?!");
+        displayText("\n\nYou ran to your parents and reunited with your family...");
     }
 
-    //this character knows about invisiblity and has a friend, they will go and fight the goblins together in their space ship
+    /**
+     * Displays text for the first version of the possible storyline
+     */
     public void story_one(){
         character.updateChar("A");
         displayText("\n\n\nYou: Hey, the same thing happened to me. One moment everything was normal, and then the next, my parents were just gone. I don't know what they are or why they're doing this.");
@@ -62,7 +135,9 @@ public class Story{
         displayText("\n\nThe air around turned misty until you were all engulfed in a white expanse.");
     }
 
-    //this character knows about invisibility but does not have a friend
+    /**
+     * Displays text for the second version of the possible storyline
+     */
     public void story_two(){
         character.updateChar("B");
         displayText("You and Milo made your way across the neighborhood.");
@@ -72,7 +147,10 @@ public class Story{
         displayText("\n\nYou picked up Milo, took a deep breath, and then stepped under the fluorecent lights shining down from the ship.\n\nThe air around turned misty until you were both engulfed in a white expanse.");
     }
 
-    //this character does not know about invisibility and does not have a friend
+
+    /**
+     * Displays text for the third version of the possible storyline
+     */
     public void story_three(){
         character.updateChar("C");
         displayText("\n\nYou and Milo made your way across the neighborhood. After a couple minutes you made it to your uncle Mikey's house. As you got closer you realized there was also a giant hole in his house.");
@@ -98,6 +176,9 @@ public class Story{
         displayText("\n\nYou picked up Milo and followed the goblin to the back of the house where a smaller ship was hovering. The goblin beckoned you to join him underneath the fluorecent lights shining down from the ship. You took a deep breath and stepped into the lights.\n\nThe air around turned misty until you were all engulfed in a white expanse.");
     }
 
+    /**
+     * This method runs the ship simulation that allows user to interact with the Ship object depending on character type
+     */
     public void intoTheShip(){
         if (character.getType().equals("C")){
             displayText("\n\n   .   .   .  Transporting to the base  .    .    .   ");
@@ -139,7 +220,7 @@ public class Story{
             displayText("'\n\nYou: I just stood under one of the ships and it transported me here. It doesn't appear as if the goblins can see kids.");
             displayText("\n\nWoman: None of us have any idea why we're here but since you can roam around undetected maybe you can figure out for us!");
             displayText("\n\nWoman: There's a communications room where you can get a translator. They won't grant us access but maybe you can sneak in.");
-            displayText("\n\nThen you can take a goblin outfit from the barracks and sneak get into the weapons room. They keep smaller ships there so we may be able to escape!");
+            displayText("\n\nThen you can find the secret code to the weapons room in the Security room. They keep the ships in the weapons room so we may be able to escape!");
             displayText("\n\nThe fate of humanity may very well be in your hands kid. Good luck!");
         }
 
@@ -196,6 +277,7 @@ public class Story{
             }
             if (user_response.equals("ENTER CENTRAL HUB")){
                 myShip.enterCentralHub();
+                System.out.println("(+)Look Around");
             }
 
             if (user_response.equals("ENTER NAVIGATION")){
@@ -206,7 +288,6 @@ public class Story{
                         displayText("\nSuccess! Access Granted.\n");
                         
                         myShip.enterNavigation();
-
                         System.out.println("(+)Look Around");
 
                         if (character.getType().equals("C") && tasks.contains("upload my DNA to the system in the Navigation room")){
@@ -234,13 +315,14 @@ public class Story{
 
             if (user_response.equals("ENTER BARRACKS" )){
                 myShip.enterBarracks();
+                System.out.println("(+)Look Around");
             }
 
             if (user_response.equals("ENTER SECURITY" )){
                 myShip.enterSecurity();
                 System.out.println("(+)Look Around");
 
-                //all characters have to acquire a secret code
+                //all character types have to acquire a secret code
                 if (character.checkInventory("secret code")==false){
                     System.out.println("(+)Find Secret Code");
                 }
@@ -258,6 +340,7 @@ public class Story{
 
             if (user_response.equals("ENTER ENGINE ROOM" )){
                 myShip.enterEngineRoom();
+                System.out.println("(+)Look Around");
             }
 
             if (user_response.equals("ENTER WEAPONS" )){
@@ -390,15 +473,62 @@ public class Story{
                 } 
             }
 
+            if (user_response.equals("LOOK AROUND")){
+                if (myShip.current_room.equals("the Central Hub")){
+                    displayText("\n\nYou looked around the Central Hub and saw many familiar faces from school and the neighborhood. ");
+                    displayText("\n\nYou: No way! I see my 6th grade gym teacher Mr.Fox! And the dentist, Dr. Stewart that took out my wisdom teeth in the 4th grade!");
+                    displayText("\n\nYou: I wonder if my parents are around here . . .");
+                }
+                if (myShip.current_room.equals("the Navigation Room")){
+                    displayText("\n\nYou looked amoung the various monitors and computers within the Navigation room. There was one enormous screen in the middle of the room.");
+                    displayText("\n\nYou could see on the giant monitor the location of all the other satellites within space.");
+                    displayText("\n\nYou: Woahh, there's so many . . .");
+
+                }
+                if (myShip.current_room.equals("the Barracks")){
+                    displayText("\n\nYou looked around the Barracks and saw an infinite amount of pods that stretched so high you couldn't even see the end of it!");
+                    displayText("\n\nThere were elevator tubes that transported people and goblins up and down into their individual pods.");
+                    displayText("\n\nYou: Woah, there moving pretty fast! I wonder if they get dizzy at all . . .");
+                }
+                if (myShip.current_room.equals("the Communications Room")){
+                    displayText("\n\nYou looked around the Communications Room and saw so many cool gadgets and devices. You picked up an interesting pink box . . .");
+                    displayText("\n\nYou: What does this do? \n\nWhen you touched the pink box you heard someone start speaking . . .");
+                    displayText("\n\nVoice: Treat! Treat!");
+                    displayText("\n\nYou: Where is that coming from? \n\nYou looked around and quickly noticed that the voice you were hearing was Milo's inside thoughts!");
+                    displayText("\n\nYou: Woahh! This let's you understand animals!");
+                    displayText("\n\nYou put the pink box back and gave Milo some doggie kibble.");
+                }
+                if (myShip.current_room.equals("the Security Room")){
+                    displayText("\n\nYou looked around the Security Room and saw many monitors and screens showing different areas on the ship.");
+                }
+                if (myShip.current_room.equals("the Medical Bay")){
+                    displayText("\n\nYou looked around the Medical Bay and saw a long hallway with different bottles of strange liquids and utensils along the walls.");
+                    displayText("\n\nThere were numerous stretchers and beds at the back end of the room.");
+                    displayText("\n\nYou: This must be where they take care of all the sick goblins . . .");
+                }
+                if (myShip.current_room.equals("the Engine Room")){
+                    displayText("\n\nYou looked around the Engine Room and saw a bunch of giant tubes and structures. You saw an interesting fluorecent blue liquid that flowed within the various tubes.");
+                    displayText("\n\nYou: This must be what keeps the ship floating in space! And what lets them transport through the smaller ships!");
+                    displayText("\n\nYou: I wonder where it comes from . . .");
+                }
+                if (myShip.current_room.equals("the Weapons Room")){
+                    displayText("\n\nYou looked around the Weapons Room and saw many shields, uniforms, and firearms. At the end of the room was a giant tube looking firearm mounted on the wall.");
+                    displayText("\n\nYou: Woah, that thing can probably do some serious damage . . .");
+                }
+            }
+
             if (tasks.size()==0){
                 break;
             }
-
         }
         
          input.close();
     }
 
+    /**
+     * This method runs the packing bag simulation where the user interacts with the House object.
+     * @param new_input the scanner that will 
+     */
     public void packBag(Scanner new_input){
         String x="true";
 
@@ -528,11 +658,15 @@ public class Story{
         }
     }
 
+    /**
+     * This method runs the entirety of the game. It calls the appropiate methods that run the choose your own game adventure story!
+     * @param args
+     */
     public static void main(String[] args){
 
         Story story = new Story();
         //uncomment after done testing code
-        // displayText("You\'re in your dimly lit bedroom reading Harry Potter: The Chamber of Secrets underneath the violet LED lights wrapped around the ceiling. Your pet dog Milo is cuddled up beside you. You\'ve just gotten back from school and your mom is almost done making dinner, spaghetti with shrimp, you\'re favorite! You\'re almost done reading the chapter, until…\n");
+        displayText("You\'re in your dimly lit bedroom reading Harry Potter: The Chamber of Secrets underneath the violet LED lights wrapped around the ceiling. Your pet dog Milo is cuddled up beside you. You\'ve just gotten back from school and your mom is almost done making dinner, spaghetti with shrimp, you\'re favorite! You\'re almost done reading the chapter, until…\n");
 
         String x="true";
         Scanner input = new Scanner(System.in);
@@ -548,12 +682,12 @@ public class Story{
             String user_response = input.nextLine().toUpperCase();
             if (user_response.equals("A")){
                 displayText("\nYou: Just a second mom! I’m almost done with this chapter! \n");
-                // displayText("\n \n  .   .   .    \n \n You continued reading feverishly to meet your parents downstairs for dinner. As you were reading you noticed Milo's ears perk up. He started looking around and whining nervously. He jumped out of the bed and scurried downstairs. \n \n You: Milo! Where are you going? \n \n You chased him down the stairs. As you got to the last step you heard a violently loud crash! BOOM! You quickly follow Milo into the kitchen.");
+                displayText("\n \n  .   .   .    \n \n You continued reading feverishly to meet your parents downstairs for dinner. As you were reading you noticed Milo's ears perk up. He started looking around and whining nervously. He jumped out of the bed and scurried downstairs. \n \n You: Milo! Where are you going? \n \n You chased him down the stairs. As you got to the last step you heard a violently loud crash! BOOM! You quickly follow Milo into the kitchen.");
                 break;
             }
             else if (user_response.equals("B")){
                 displayText("\nYou: Okay! Coming! \n");
-                // displayText("\n \n  .   .   .    \n \n You put the book away and wake up Milo to go downstairs. As you get to the last step the smell of freshly made spaghetti fills the house. You sit down at the kitchen table as your mom brings you a hot plate of spaghetti and gives you a kiss on your forehead. \n \n Mom: Ah! Forgot the napkin! \n \n Your mom leaves to bring you a napkin. Suddenly, you hear a loud crash from the kitchen! BOOM! \n \n You: MOM?! \n \n You quickly follow Milo into the kitchen.");
+                displayText("\n \n  .   .   .    \n \n You put the book away and wake up Milo to go downstairs. As you get to the last step the smell of freshly made spaghetti fills the house. You sit down at the kitchen table as your mom brings you a hot plate of spaghetti and gives you a kiss on your forehead. \n \n Mom: Ah! Forgot the napkin! \n \n Your mom leaves to bring you a napkin. Suddenly, you hear a loud crash from the kitchen! BOOM! \n \n You: MOM?! \n \n You quickly follow Milo into the kitchen.");
                 break;
             }
             else {
@@ -563,10 +697,10 @@ public class Story{
 
             //end of decision block 1//
 
-            // displayText(" You see a group of green looking goblin creatures kidnapping your parents! They were speaking a strange language that you couldn't understand. Your mom yelled out to you as the creatures had dragged them out. \n \n Mom: Honey! Go hide! Don't worry about us, we'll be okay! \n \n You: But Mom! \n \n Mom: GO! Now! \n \n .   .   .   \n");
-            // displayText("\nYou dropped to the floor and remained staring at the giant hole in the kitchen where your parents had just been taken through. You started sobbing uncontrollably and Milo came up to you to console you.");
+            displayText(" You see a group of green looking goblin creatures kidnapping your parents! They were speaking a strange language that you couldn't understand. Your mom yelled out to you as the creatures had dragged them out. \n \n Mom: Honey! Go hide! Don't worry about us, we'll be okay! \n \n You: But Mom! \n \n Mom: GO! Now! \n \n .   .   .   \n");
+            displayText("\nYou dropped to the floor and remained staring at the giant hole in the kitchen where your parents had just been taken through. You started sobbing uncontrollably and Milo came up to you to console you.");
             displayText("\n \nYou: What are we going to do Milo?");
-            // displayText("\n \nSoon it would be night time and it won't be safe to stay here. A breeze comes through the hole and you see Milo start shivering.");
+            displayText("\n \nSoon it would be night time and it won't be safe to stay here. A breeze comes through the hole and you see Milo start shivering.");
 
             ArrayList<String> current_options = new ArrayList<String>();
             current_options.add("(+)A:Get food for you and Milo");
