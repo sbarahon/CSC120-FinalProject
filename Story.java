@@ -78,23 +78,27 @@ public class Story{
             displayText("We'll take a sample of your DNA and gather the rest of the humans before the meteor hits. You've done a wonderful service for your planet. . . ");
             displayText("\n\n  . . . . . \n\nIn the end, the Goblins were able to rescue all the kids left on Earth before the meteor hit. Everyone watched as the giant space rock hit the planet and caused an incredibly large explosion . . . ");
             displayText("\n\nYou: Well, to new beginnings!");
+
+            //if user searched in parents room earlier in the game they get to see parents at the end
             if (character.checkInventory("picture of parents")){
                 findParents();
             }
         }
+
         if (character.getType().equals("C")){
             displayText("\n\nYou were able to help the Goblins update their system and identify the missing kids on Earth!");
             displayText("\n\nIn the end, the Goblins were able to rescue all the kids before the meteor hit. Everyone watched as the giant space rock hit the planet and caused an incredibly large explosion . . . ");
             displayText("\n\nYou: Well, to new beginnings!");
+            //if user searched in parents room earlier in the game they get to see parents at the end
             if (character.checkInventory("picture of parents")){
                 findParents();
             }
         }
-        displayText(" . . . . . . . . .The End . . . . .. . :)");
-
+        displayText("\n\n . . . . . . . . .The End . . . . .. . :)");
     }
+
     /**
-     * Displays text for the finidng parents part of the story
+     * Displays text for the finding parents part of the story
      */
     public void findParents(){
         displayText("\n\nSome .... time.... later ... \n\nYou went up to one of the Goblins and showed them the picture of your parents.");
@@ -111,7 +115,7 @@ public class Story{
     }
 
     /**
-     * Displays text for the first version of the possible storyline
+     * Displays text for the first version of the possible storyline and updates character accordingly
      */
     public void story_one(){
         character.updateChar("A");
@@ -146,7 +150,6 @@ public class Story{
         displayText("\n\nYou: Maybe if I stand under the ship, I'll go to the same place my parents went.");
         displayText("\n\nYou picked up Milo, took a deep breath, and then stepped under the fluorecent lights shining down from the ship.\n\nThe air around turned misty until you were both engulfed in a white expanse.");
     }
-
 
     /**
      * Displays text for the third version of the possible storyline
@@ -276,11 +279,12 @@ public class Story{
                 System.out.println("You're currently on level "+ myShip.getCurrent_floor()+"\n");
             }
             if (user_response.equals("ENTER CENTRAL HUB")){
-                myShip.enterCentralHub();
+                if (myShip.enterCentralHub()){
                 System.out.println("(+)Look Around");
+                }
             }
 
-            if (user_response.equals("ENTER NAVIGATION")){
+            if (user_response.equals("ENTER NAVIGATION") || user_response.equals("ENTER NAVIGATION ROOM")){
                 if (myShip.current_floor==1){
                     System.out.print("\nEnter the secret code to access the Navigation Room:");
                     String user_input = input.nextLine().toUpperCase();
@@ -293,6 +297,7 @@ public class Story{
                         if (character.getType().equals("C") && tasks.contains("upload my DNA to the system in the Navigation room")){
                             System.out.println("(+)Upload Specimen");
                         }
+
                     } else {
                         displayText("Error. Incorrect code. Access Denied.");
                     }
@@ -302,55 +307,59 @@ public class Story{
                 
             }
 
-            if (user_response.equals("ENTER COMMUNICATIONS" )){
-                myShip.enterCommunications();
-                System.out.println("(+)Look Around");
+            if (user_response.equals("ENTER COMMUNICATIONS")||user_response.equals("ENTER COMMUNICATIONS ROOM")){
+                if (myShip.enterCommunications()){
+                    System.out.println("(+)Look Around");
 
-                if (character.getType().equals("A")|| character.getType().equals("B")){
-                   if (character.checkInventory("translator")==false){
-                    System.out.println("(+)Look for Translator");
+                    if (character.getType().equals("A")|| character.getType().equals("B")){
+                    if (character.checkInventory("translator")==false){
+                        System.out.println("(+)Look for Translator");
+                        }
                     }
                 }
             }
 
-            if (user_response.equals("ENTER BARRACKS" )){
-                myShip.enterBarracks();
-                System.out.println("(+)Look Around");
-            }
-
-            if (user_response.equals("ENTER SECURITY" )){
-                myShip.enterSecurity();
-                System.out.println("(+)Look Around");
-
-                //all character types have to acquire a secret code
-                if (character.checkInventory("secret code")==false){
-                    System.out.println("(+)Find Secret Code");
+            if (user_response.equals("ENTER BARRACKS")){
+                if (myShip.enterBarracks()){
+                    System.out.println("(+)Look Around");
                 }
             }
 
-            if (user_response.equals("ENTER MEDICAL BAY" )){
-                myShip.enterMedBay();
-                System.out.println("(+)Look Around");
+            if (user_response.equals("ENTER SECURITY") || user_response.equals("ENTER SECURITY ROOM")){
+                if (myShip.enterSecurity()){
+                    System.out.println("(+)Look Around");
 
-                if (character.getType().equals("C") && character.checkInventory("specimen")==false){
-                    System.out.println("(+)Get the Specimen");
+                    //all character types have to acquire a secret code
+                    if (character.checkInventory("secret code")==false){
+                        System.out.println("(+)Find Secret Code");
+                    }
                 }
+                
+            }
+
+            if (user_response.equals("ENTER MEDICAL BAY")||user_response.equals("ENTER MEDICAL")){
+                if(myShip.enterMedBay()){
+                    System.out.println("(+)Look Around");
+                    if (character.getType().equals("C") && character.checkInventory("specimen")==false){
+                        System.out.println("(+)Get the Specimen");
+                    }
+                }
+                
 
             }
 
-            if (user_response.equals("ENTER ENGINE ROOM" )){
-                myShip.enterEngineRoom();
-                System.out.println("(+)Look Around");
+            if (user_response.equals("ENTER ENGINE ROOM") || user_response.equals("ENTER ENGINE" )){
+                if (myShip.enterEngineRoom()){
+                    System.out.println("(+)Look Around");
+                }
             }
 
-            if (user_response.equals("ENTER WEAPONS" )){
-
+            if (user_response.equals("ENTER WEAPONS" )||user_response.equals("ENTER WEAPONS ROOM")){
                 if (myShip.current_floor==2){
                     System.out.print("\nEnter the secret code to access the Weapons Room:");
                     String user_input = input.nextLine().toUpperCase();
                     if (user_input.equals("5678")){
                         displayText("\nSuccess! Access Granted.\n");
-                        
                         myShip.enterWeaponsRoom();
                         System.out.println("(+)Look Around");
 
@@ -358,16 +367,14 @@ public class Story{
                             if(tasks.contains("sneak into the weapons room and hijack a ship")){
                                 System.out.println("(+)Hijack Ship");
                             }
-
-                        } else {
-                        displayText("Error. Incorrect code. Access Denied.");
                         }
-                    } else {
-                        System.out.println("\nYou need to go to Level 2 to go to the Weapons Room.");
-            
-                    }
-                }
 
+                    } else {
+                        displayText("Error. Incorrect code. Access Denied.");
+                    }
+                } else {
+                    System.out.println("\nYou need to go to Level 2 to go to the Weapons Room.");
+                }
             }
 
             if (user_response.equals("OPTIONS")){
@@ -387,7 +394,7 @@ public class Story{
                         character.addInventory("secret code");
                         tasks.remove("get the secret code to the weapons room in the Security room");
                     } else { 
-                        displayText("We should really get that translator so I can understand what all these signs mean . . .pop");
+                        displayText("We should really get that translator so I can understand what all these signs mean . . .");
                     }
                 } 
 
@@ -521,13 +528,12 @@ public class Story{
                 break;
             }
         }
-        
          input.close();
     }
 
     /**
      * This method runs the packing bag simulation where the user interacts with the House object.
-     * @param new_input the scanner that will 
+     * @param new_input the scanner that will wait for user input
      */
     public void packBag(Scanner new_input){
         String x="true";
@@ -665,7 +671,8 @@ public class Story{
     public static void main(String[] args){
 
         Story story = new Story();
-        //uncomment after done testing code
+
+        //opening text
         displayText("You\'re in your dimly lit bedroom reading Harry Potter: The Chamber of Secrets underneath the violet LED lights wrapped around the ceiling. Your pet dog Milo is cuddled up beside you. You\'ve just gotten back from school and your mom is almost done making dinner, spaghetti with shrimp, you\'re favorite! You\'re almost done reading the chapter, until…\n");
 
         String x="true";
@@ -679,21 +686,21 @@ public class Story{
             // while statement for decision block 1// 
             while (x.equals("true")){
             
-            String user_response = input.nextLine().toUpperCase();
-            if (user_response.equals("A")){
-                displayText("\nYou: Just a second mom! I’m almost done with this chapter! \n");
-                displayText("\n \n  .   .   .    \n \n You continued reading feverishly to meet your parents downstairs for dinner. As you were reading you noticed Milo's ears perk up. He started looking around and whining nervously. He jumped out of the bed and scurried downstairs. \n \n You: Milo! Where are you going? \n \n You chased him down the stairs. As you got to the last step you heard a violently loud crash! BOOM! You quickly follow Milo into the kitchen.");
-                break;
+                String user_response = input.nextLine().toUpperCase();
+                if (user_response.equals("A")){
+                    displayText("\nYou: Just a second mom! I’m almost done with this chapter! \n");
+                    displayText("\n \n  .   .   .    \n \n You continued reading feverishly to meet your parents downstairs for dinner. As you were reading you noticed Milo's ears perk up. He started looking around and whining nervously. He jumped out of the bed and scurried downstairs. \n \n You: Milo! Where are you going? \n \n You chased him down the stairs. As you got to the last step you heard a violently loud crash! BOOM! You quickly follow Milo into the kitchen.");
+                    break;
+                }
+                else if (user_response.equals("B")){
+                    displayText("\nYou: Okay! Coming! \n");
+                    displayText("\n \n  .   .   .    \n \n You put the book away and wake up Milo to go downstairs. As you get to the last step the smell of freshly made spaghetti fills the house. You sit down at the kitchen table as your mom brings you a hot plate of spaghetti and gives you a kiss on your forehead. \n \n Mom: Ah! Forgot the napkin! \n \n Your mom leaves to bring you a napkin. Suddenly, you hear a loud crash from the kitchen! BOOM! \n \n You: MOM?! \n \n You quickly follow Milo into the kitchen.");
+                    break;
+                }
+                else {
+                    System.out.print("Choose either A or B:");
+                }
             }
-            else if (user_response.equals("B")){
-                displayText("\nYou: Okay! Coming! \n");
-                displayText("\n \n  .   .   .    \n \n You put the book away and wake up Milo to go downstairs. As you get to the last step the smell of freshly made spaghetti fills the house. You sit down at the kitchen table as your mom brings you a hot plate of spaghetti and gives you a kiss on your forehead. \n \n Mom: Ah! Forgot the napkin! \n \n Your mom leaves to bring you a napkin. Suddenly, you hear a loud crash from the kitchen! BOOM! \n \n You: MOM?! \n \n You quickly follow Milo into the kitchen.");
-                break;
-            }
-            else {
-                System.out.print("Choose either A or B:");
-            }
-        }
 
             //end of decision block 1//
 
@@ -735,7 +742,6 @@ public class Story{
                     current_options.remove("(+)B:Pack a to-go bag");
                 }
 
-                //CHANGE BACK TO TRUE AFTER DONE TESTING
                 if (user_response.equals("C")){
                     if (current_options.contains("(+)B:Pack a to-go bag")==true){
                         displayText("I should probably pack some things before I leave.");
@@ -765,7 +771,6 @@ public class Story{
             System.out.println("C:(+) Run Away");
             System.out.print("\nChoose an action:");
 
-
             while (x.equals("true")){
                 String user_response = input.nextLine().toUpperCase();
 
@@ -776,53 +781,61 @@ public class Story{
                     displayText("\n\nYou: What can I possibly do to help this family?\n\nYou looked around and saw a couple rocks near the house garden.\n\nYou: Maybe I can throw these rocks at them!");
                     displayText("\n\nYou began throwing many rocks at the goblins as they were hauling out the kid's parents. The kid came outside and began throwing rocks with you!");
                     displayText("\n\nKid: Please, don't take them!");
-                }
+                    displayText("\n\nThe goblins looked very confused as to where the rocks were coming from. That's when you realized . . .");
+                    displayText("\n\nYou: They can't see us!");
+                    displayText("\n\nThe attacks were no match for the 7ft tall goblins. They stood below the floating ship where they became transparent and dissappeared into the air. His parents were gone.");
+                    displayText(" The kid began crying in the spot where his parents vanished   .   .   .  ");
+                    story.story_one();
+                    break; //exit outer while loop
 
+
+                }
                 //make each branch a method in story class
                 if (user_response.equals("B")){
                     displayText("\nYou remained watching the events from behind the bush.");
                     displayText(" The kid cried out for his parents as the goblins dragged them out.");
                     displayText("\n\nKid: Please, don't take them! \n\nThe kid became so desparate he started hauling rocks at the goblins to try and stop them.");
+                    displayText("\n\nThe goblins looked very confused as to where the rocks were coming from. That's when you realized . . .");
+                    displayText("\n\nYou: They can't see us!");
+                    displayText("\n\nThe attacks were no match for the 7ft tall goblins. They stood below the floating ship where they became transparent and dissappeared into the air. His parents were gone.");
+                    displayText(" The kid began crying in the spot where his parents vanished   .   .   .  ");
+
+                    System.out.println("\n\nA:(+) Go and console him.");
+                    System.out.println("B:(+) Runaway.");
+
+                    while (x.equals("true")){
+                        System.out.print("\nChoose an action:");
+                        String response = input.nextLine();
+
+                        if(response.equals("A")){
+                            displayText("\n\nYou attached Milo's leash to a fence behind the bush and placed your bookbag next to him. \n\nYou: I'll be right back!");
+                            displayText("\n\nYou walked up to the kid and sat next to him.");
+                            story.story_one();
+                            break; //exit inner while loop
+                            
+                        }
+                        if(response.equals("B")){
+                            story.story_two();
+                            break;//exit inner while loop
+                        }
+                    }
+
+                    break; //exit outer while loop
 
                 }
                 if (user_response.equals("C")){
                     displayText("You notice an opening within a fence nearby. You decided to run with Milo through the opening in the fence.");
                     story.story_three();
-                    break;
+                    break; //exit outer while loop
                 }
 
-                displayText("\n\nThe goblins looked very confused as to where the rocks were coming from. That's when you realized . . .");
-                displayText("\n\nYou: They can't see us!");
-                displayText("\n\nThe attacks were no match for the 7ft tall goblins. They stood below the floating ship where they became transparent and dissappeared into the air. His parents were gone.");
-                displayText(" The kid began crying in the spot where his parents vanished   .   .   .  ");
-
-                if (user_response.equals("B")){
-
-                    System.out.println("\n\nA:(+) Go and console him.");
-                    System.out.println("B:(+) Runaway.");
-                    System.out.print("\nChoose an action:");
-
-                    String response = input.nextLine();
-
-                    if(response.equals("A")){
-                        displayText("\n\nYou attached Milo's leash to a fence behind the bush and placed your bookbag next to him. \n\nYou: I'll be right back!");
-                        displayText("\n\nYou walked up to the kid and sat next to him.");
-                        story.story_one();
-                        
-                    }
-                    if(response.equals("B")){
-                        story.story_two();
-                    }
-                    break;
-
+                else {
+                    System.out.print("\nChoose either A, B, or C:");
                 }
 
-                story.story_one();
-                break;
-            }
+            }  //end of decision block 2
             break;
         } 
-
         story.intoTheShip();
         story.ending();
         displayText("\n\n\nThanks for playing :) . . .");
